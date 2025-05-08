@@ -1,0 +1,27 @@
+.admin-sidebar {
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 1rem;
+    transition: width 0.3s ease;
+  }
+  
+  .admin-sidebar.collapsed {
+    width: 50px;
+  }
+  
+  .sidebar-menu {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar-menu li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .sidebar-toggle {
+    display: block;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+  

@@ -1,0 +1,15 @@
+.location-manager {
+    width: 100%;
+  }
+  
+  .grid-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .grid-buttons button {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  

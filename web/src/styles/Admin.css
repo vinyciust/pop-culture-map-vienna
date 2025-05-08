@@ -1,0 +1,147 @@
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+
+  
+  .admin-body {
+    display: flex;
+    flex-grow: 1;
+  }
+  
+  .admin-content {
+    flex-grow: 1;
+    padding: 1rem;
+  }
+  
+  .grid-buttons {
+    margin-bottom: 1rem;
+    display: flex; /* Flex container for buttons */
+    gap: 10px; /* Space between buttons */
+  }
+
+  .btn {
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #007bff; /* Your desired button color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  
+  .btn:hover {
+    background-color: #0056b3; /* Darker color for hover state */
+  }
+  
+  /* Admin.css */
+
+  .admin-navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    display: flex;
+    justify-content: space-between; /* Align items at opposite ends */
+    padding: 10px 20px; /* Add some padding for spacing */
+  }
+  
+  .admin-navbar-logo {
+    cursor: pointer;
+  }
+
+
+.admin-navbar .back-button {
+  margin-left: 10px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.admin-navbar .back-button:hover {
+  background-color: #0056b3;
+}
+
+.ag-theme-alpine {
+  width: 100%; /* Ensure the grid itself takes up the full width */
+  height: 80vh; /* Adjust the height as needed */
+}
+.grid-container {
+  width: 100%; /* Ensure the grid container takes up the full width */
+  overflow-x: auto; /* Add horizontal scroll if needed */
+}
+
+/* Set a container for the feedback message */
+.feedback-container {
+  position: relative; /* Parent should have relative positioning for the absolute child */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* Add some space below to avoid overlapping with the grid */
+}
+
+/* Feedback container to position the message */
+.feedback-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Feedback container to position the message */
+  .feedback-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Updated feedback message styling */
+.feedback-message {
+  position: absolute;
+  right: 20px;
+  top: 4px; /* Adjust this value to move it lower if needed */
+  padding: 12px 20px;
+  background-color: #f0f4f8; /* Softer background color */
+  border: 1px solid #cbd5e0; /* Softer border color */
+  color: #2d3748; /* Darker text color for modern feel */
+  font-weight: 600; /* Semi-bold for better visibility */
+  font-size: 14px; /* Slightly larger font for readability */
+  border-radius: 8px; /* Rounded corners for modern look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  max-width: 350px; /* Increased max-width for longer messages */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+  z-index: 1000; /* High z-index to ensure it stays above the grid */
+}
+
+.feedback-message ul {
+  margin-top: 5px;
+  list-style-type: none;
+  padding-left: 0;
+  line-height: 1.6; /* Better line spacing for readability */
+}
+
+.feedback-message ul li {
+  font-size: 13px; /* Slightly smaller for subtext */
+  color: #2d3748; /* Consistent with the main text color */
+  border-bottom: 1px solid #e2e8f0; /* Divider between items */
+  padding: 4px 0; /* Padding for better spacing */
+}
+
+
+.save-button {
+  margin-right: auto; /* Ensure button stays on the left */
+}

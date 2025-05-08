@@ -1,0 +1,114 @@
+import React, { useState, useEffect } from 'react';
+import { AgGridReact } from 'ag-grid-react'; // Import AG Grid React library
+import axios from '../axiosConfig'; // Import your axios configuration
+import 'ag-grid-community/styles/ag-grid.css'; // Import AG Grid styles
+import 'ag-grid-community/styles/ag-theme-alpine.css'; // Import AG Grid theme
+import '../styles/Admin.css';
+
+
+
+const AdminPanel = () => {
+  const [rowData, setRowData] = useState([]); // Initialize rowData as an empty array
+  const [gridApi, setGridApi] = useState(null); // State to store grid API
+  const [feedbackMessage, setFeedbackMessage] = useState(''); // State for feedback message
+  const [changedData, setChangedData] = useState([]); // State to store changed data
+
+  // Fetch data from the backend API when the component mounts
+  useEffect(() => {
+    axios.get('/api/locations/')
+      .then(response => {
+        setRowData(response.data); // Set the fetched data as rowData
+      })
+      .catch(error => {
+        console.error('Error fetching locations:', error);
+      });
+  }, []);
+
+  // Handler for grid ready event to get grid API
+  const onGridReady = (params) => {
+    setGridApi(params.api); // Set the grid API when the grid is ready
+  };
+
+  // Handler for cell value changes to track edits
+  const onCellValueChanged = (params) => {
+    params.data.isChanged = true;  // Mark row as changed
+    setRowData([...rowData]); // Update state to trigger re-render
+
+    
+    // Update the changedData array
+    setChangedData(prevState => {
+      const updatedChanges = [...prevState];
+      const existingChangeIndex = updatedChanges.findIndex(change => change.id === params.data.id);
+
+      if (existingChangeIndex > -1) {
+        updatedChanges[existingChangeIndex] = params.data; // Update existing change
+      } else {
+        updatedChanges.push(params.data); // Add new change
+      }
+
+      return updatedChanges;
+    });
+  };
+
+  const saveChanges = () => {
+    const updatedRows = rowData.filter(row => row.isChanged);
+    axios.post('/api/locations/update/', updatedRows)
+      .then(response => {
+        setFeedbackMessage('Changes saved successfully!');
+        setChangedData([]); // Reset changed data after successful save
+      })
+      .catch(error => {
+        setFeedbackMessage('Failed to save changes. Please try again.');
+        console.error('Error saving changes:', error);
+      });
+  };
+
+  const columnDefs = [
+    { headerName: 'Name', field: 'name', editable: true },
+    { headerName: 'Origin', field: 'origin', editable: true },
+    { headerName: 'Category', field: 'category', editable: true },
+    { headerName: 'City', field: 'city', editable: true },
+    { headerName: 'Country', field: 'country', editable: true },
+    { headerName: 'Image URL', field: 'image_url', editable: true },
+  ];
+
+  return (
+    <div className="admin-panel">
+      <div className="grid-buttons">
+        <button className="btn save-button" onClick={saveChanges}>Save</button>
+        <button className="btn new-button">New Button</button>
+      </div>
+      {/* Feedback message */}
+      {feedbackMessage && (
+        <div className="feedback-message">
+          {feedbackMessage}
+          {changedData.length > 0 && (
+            <ul className="changed-list">
+              {changedData.map((change) => (
+                <li key={change.id}>
+                  ID: {change.id}, Name: {change.name}, Changed Fields: 
+                  {Object.entries(change).map(([key, value]) => 
+                    key !== 'id' && key !== 'name' && value !== null ? ` ${key}: ${value}` : ''
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
+    <div className="ag-theme-alpine" style={{ height: '500px', width: '100%' }}>
+      <AgGridReact
+        onGridReady={onGridReady}
+        rowData={rowData}
+        columnDefs={columnDefs}
+        defaultColDef={{ resizable: true }} // Allow resizing columns
+        onCellValueChanged={onCellValueChanged} // Attach event handler
+        rowSelection="multiple"
+        enableRangeSelection={true}
+      />
+    </div>
+  </div>
+  );
+};
+
+export default AdminPanel;

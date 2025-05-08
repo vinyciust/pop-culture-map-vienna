@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PopCulture.Api.Data;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,16 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AllowReactApp", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:3000")  // o URL onde o CRA roda
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -24,6 +35,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("AllowReactApp");
 // 4) Mapeia todas as rotas dos ApiControllers
 app.MapControllers();
 

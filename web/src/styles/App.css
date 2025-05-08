@@ -1,0 +1,193 @@
+/* src/styles/App.css */
+
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif; /* Use a modern, clean font */
+    background-color: #f5f5f5; /* Light grey background for a modern look */
+    color: #333; /* Dark grey text color for better readability */
+  }
+  
+  .App {
+    text-align: center;
+  }
+  
+  /* Navbar Styles */
+  nav {
+    background-color: #ffffff; /* White background for a clean, modern look */
+    color: #333; /* Dark text color */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  nav h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 500;
+  }
+  
+  nav input[type="text"] {
+    padding: 8px 12px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  nav input[type="text"]:focus {
+    border-color: #007bff; /* Primary color */
+  }
+  
+  nav button {
+    padding: 8px 16px;
+    background-color: #007bff; /* Primary color */
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  nav button:hover {
+    background-color: #0056b3; /* Darker shade of primary color */
+  }
+  
+  /* Filter Dropdown Styles */
+  .filter {
+    margin: 20px;
+  }
+  
+  .filter select {
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    background-color: white;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .filter select:focus {
+    border-color: #007bff; /* Primary color */
+  }
+  
+  /* Map Container Styles */
+  .leaflet-container {
+    width: 100%;
+    height: 60vh; /* Adjust height as needed */
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  }
+  
+  /* Popup Styles */
+  .leaflet-popup-content-wrapper {
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .leaflet-popup-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 5px;
+  }
+  
+  .leaflet-popup-content a {
+    color: #007bff; /* Primary color */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .leaflet-popup-content a:hover {
+    text-decoration: underline;
+  }
+
+  .map-container {
+    width: 95%; /* Keep the width 100% to make it responsive */
+    height: 70vh; /* Set the height to 50% of the viewport height */
+    z-index: 1;
+  }
+  
+
+  .map-wrapper {
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+  width: 100%; /* Full width of parent container */
+  height: 50vh; /* Set desired height, e.g., 50% of the viewport height */
+  margin: 100px auto 0; /* Add top margin to move the map down */
+}
+
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 200px; /* Optional: Adjust the width as needed */
+}
+
+.popup-image-container {
+  margin-bottom: 10px; /* Space between image and text */
+}
+
+.popup-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px; /* Rounded corners for a more modern look */
+}
+
+.popup-text h3 {
+  margin: 5px 0;
+  font-size: 1.2em; /* Adjust font size for title */
+}
+
+.popup-text p {
+  margin: 2px 0;
+  font-size: 0.9em; /* Adjust font size for description */
+}
+
+.button-filters {
+  display: flex;
+  justify-content: start; /* Aligns the buttons to the left */
+  margin: 10px 0; /* Adds some margin to space it from other elements */
+}
+
+.filter-container {
+  display: flex;
+  align-items: center; /* Vertically center the button and dropdown */
+  margin: 10px 0; /* Adds some margin to space it from other elements */
+}
+
+.filter-button {
+  background-color: #e0e0e0; /* Neutral grey color */
+  color: #333; /* Dark text color */
+  border: none;
+  padding: 8px 12px;
+  margin-left: 10px; /* Space between dropdown and button */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.filter-button:hover {
+  background-color: #c0c0c0; /* Slightly darker grey on hover */
+}
+
+.filter select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
