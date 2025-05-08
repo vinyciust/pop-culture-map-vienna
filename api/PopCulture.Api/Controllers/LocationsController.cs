@@ -15,7 +15,7 @@ namespace PopCulture.Api.Controllers
 
         public LocationsController(AppDbContext db, ILogger<LocationsController> logger)
         {
-            _db = db;
+            _db     = db;
             _logger = logger;
         }
 
@@ -30,11 +30,12 @@ namespace PopCulture.Api.Controllers
 
             var list = await _db.api_location
                 .AsNoTracking()
-                .Select(l => new LocationDto {
-                    Id = l.Id,
-                    Name = l.Name,
-                    Latitude = l.Latitude,
-                    Longitude = l.Longitude
+                .Select(l => new LocationDto
+                {
+                    Id        = l.id,
+                    Name      = l.name,
+                    Latitude  = l.latitude,
+                    Longitude = l.longitude
                 })
                 .ToListAsync(ct);
 
@@ -44,21 +45,22 @@ namespace PopCulture.Api.Controllers
         /// <summary>
         /// Retorna uma localidade pelo ID.
         /// </summary>
-        [HttpGet("{id:int}")]
+        [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<LocationDto>> GetById(int id, CancellationToken ct)
+        public async Task<ActionResult<LocationDto>> GetById(long id, CancellationToken ct)
         {
             _logger.LogInformation("Fetching location {Id}", id);
 
             var loc = await _db.api_location
                 .AsNoTracking()
-                .Where(l => l.Id == id)
-                .Select(l => new LocationDto {
-                    Id = l.Id,
-                    Name = l.Name,
-                    Latitude = l.Latitude,
-                    Longitude = l.Longitude
+                .Where(l => l.id == id)
+                .Select(l => new LocationDto
+                {
+                    Id        = l.id,
+                    Name      = l.name,
+                    Latitude  = l.latitude,
+                    Longitude = l.longitude
                 })
                 .FirstOrDefaultAsync(ct);
 
