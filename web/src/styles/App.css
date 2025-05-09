@@ -114,19 +114,19 @@ body {
   }
 
   .map-container {
-    width: 95%; /* Keep the width 100% to make it responsive */
-    height: 70vh; /* Set the height to 50% of the viewport height */
+    width: 95%;
+    height: 70vh;
     z-index: 1;
   }
   
 
   .map-wrapper {
   display: flex;
-  justify-content: center; /* Horizontally center */
-  align-items: center; /* Vertically center */
-  width: 100%; /* Full width of parent container */
-  height: 50vh; /* Set desired height, e.g., 50% of the viewport height */
-  margin: 100px auto 0; /* Add top margin to move the map down */
+  justify-content: center;
+  align-items: center; 
+  width: 100%; 
+  height: 50vh;
+  margin: 100px auto 0;
 }
 
 
@@ -164,10 +164,37 @@ body {
   margin: 10px 0; /* Adds some margin to space it from other elements */
 }
 
-.filter-container {
+.filter-container,
+.add-form {
+  width: 95%;
+  margin: 0 auto 1rem;
   display: flex;
-  align-items: center; /* Vertically center the button and dropdown */
-  margin: 10px 0; /* Adds some margin to space it from other elements */
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-container .add-btn {
+  margin-right: auto;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.add-form input,
+.add-form select {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .filter-button {
@@ -175,7 +202,7 @@ body {
   color: #333; /* Dark text color */
   border: none;
   padding: 8px 12px;
-  margin-left: 10px; /* Space between dropdown and button */
+  margin-right: 10px; /* Space between dropdown and button */
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
@@ -190,4 +217,26 @@ body {
   padding: 8px;
   border-radius: 5px;
   border: 1px solid #ccc;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }

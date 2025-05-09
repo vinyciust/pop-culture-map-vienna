@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PopCulture.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dfc9553c10b6a1d7f2d6f1ca0c88fbcc02a0352b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8c85f21c49c3816ff5a63b806f27ed7d068a843c")]
 [assembly: System.Reflection.AssemblyProductAttribute("PopCulture.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PopCulture.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
